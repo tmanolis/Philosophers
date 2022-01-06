@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 15:14:39 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/06 17:58:52 by tmanolis         ###   ########.fr       */
+/*   Created: 2021/05/26 11:29:56 by tmanolis          #+#    #+#             */
+/*   Updated: 2022/01/06 17:30:57 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*routine()
+int	ft_atoi(const char *str)
 {
-	printf("je do the routine\n");
-	return (0);
-}
+	int	i;
+	int	j;
+	int	value;
 
-int	main(int argc, char **argv)
-{
-	t_data data;
-	
-	data = (t_data){0};
-	if (argc > 1)
-		init_philo(&data);
-	(void)argv;
-	free4yourlife(&data);
-	return (0);
+	i = 0;
+	value = 0;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			j = 1;
+		i++;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		value = value * 10 + (str[i] - 48);
+		i++;
+	}
+	if (j == 1)
+		return (value * -1);
+	else
+		return (value);
 }

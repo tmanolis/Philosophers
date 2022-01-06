@@ -2,18 +2,17 @@
 
 SRCS_DIR = ./srcs/
 SRCS = main.c								\
+	init_and_free/free4yourlife.c			\
+	init_and_free/init_philo.c				\
+	utils/ft_atoi.c							\
+	utils/ft_isdigit.c						\
 		
 OBJS = $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
 
 # *--------- includes ---------* 
 
-INCLUDES_DIR = -I ./includes/header
-INC = ./includes/header/philosophers.h
-
-# *--------- Libft ---------* 
-
-LIBFT_DIR = ./includes/Libft
-LIBFT_FLAGS = -L$(LIBFT_DIR) -lft
+INCLUDES_DIR = -I ./includes
+INC = ./includes/philosophers.h
 
 # *--------- OTHERS ---------*
 
@@ -32,15 +31,12 @@ all:		$(NAME)
 	$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDES_DIR) 
 
 $(NAME):	$(OBJS) $(INC)
-			make -C $(LIBFT_DIR)
-	        $(CC) $(CFLAGS) $(OBJS) $(LIBFT_FLAGS) $(INCLUDES_DIR) -o $(NAME)
+	        $(CC) $(CFLAGS) $(OBJS) $(INCLUDES_DIR) -o $(NAME)
 
 clean:
-			make -C $(LIBFT_DIR) clean
 			$(RM) $(OBJS)
 
 fclean:		clean
-			make -C $(LIBFT_DIR) fclean
 			$(RM) $(NAME)
 
 re:			fclean all
