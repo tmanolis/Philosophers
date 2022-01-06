@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free4yourlife.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 15:14:39 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/06 19:41:39 by tmanolis         ###   ########.fr       */
+/*   Created: 2022/01/06 17:53:11 by tmanolis          #+#    #+#             */
+/*   Updated: 2022/01/06 19:43:36 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	*routine()
+void	free4yourlife(t_data *data)
 {
-	printf("je do the routine\n");
-	return (0);
-}
-
-int	main(int argc, char **argv)
-{
-	t_data data;
-	
-	data = (t_data){0};
-	
-	if (argc > 1)
-	{
-		if (get_args(argc, argv, &data) == FAILURE)
-			return (FAILURE);
-	}
-	init_threads(&data);
-	join_threads(&data);
-	free4yourlife(&data);
-	return (0);
+	free(data->thread);
 }

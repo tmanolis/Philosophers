@@ -2,11 +2,12 @@
 
 SRCS_DIR = ./srcs/
 SRCS = main.c								\
-	init_and_free/free4yourlife.c			\
-	init_and_free/get_args.c				\
-	init_and_free/init_philo.c				\
+	init/get_args.c							\
+	init/init_threads.c						\
+	utils/free4yourlife.c					\
 	utils/ft_atoi.c							\
 	utils/ft_isdigit.c						\
+	utils/join_threads.c					\
 		
 OBJS = $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))
 

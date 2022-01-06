@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free4yourlife.c                                    :+:      :+:    :+:   */
+/*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 17:53:11 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/06 17:58:31 by tmanolis         ###   ########.fr       */
+/*   Created: 2022/01/06 18:39:55 by tmanolis          #+#    #+#             */
+/*   Updated: 2022/01/06 19:30:46 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	free4yourlife(t_data *data)
+int	get_args(int argc, char **argv, t_data *data)
 {
-	free(data->philo);
+	(void)argc;
+	data->nb_philo = atoi(argv[1]);
+	printf("nb philo: %d\n", data->nb_philo);
+	data->nb_fork = data->nb_philo;
+	return (SUCCESS);
 }
