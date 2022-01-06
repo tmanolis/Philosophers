@@ -3,6 +3,7 @@
 SRCS_DIR = ./srcs/
 SRCS = main.c								\
 	init_and_free/free4yourlife.c			\
+	init_and_free/get_args.c				\
 	init_and_free/init_philo.c				\
 	utils/ft_atoi.c							\
 	utils/ft_isdigit.c						\

@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/06 18:18:12 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/06 18:42:02 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_philo
 typedef struct s_data
 {
 	pthread_t	*philo;
-
+	int			nb_philo;
 
 }				t_data;
 
@@ -40,6 +40,8 @@ typedef struct s_data
 void	*routine();
 // INIT_AND_FREE --- free4yourlife
 void	free4yourlife(t_data *data);
+// INIT_AND_FREE --- get_args
+int		get_args(int argc, char **argv, t_data *data);
 // INIT_AND_FREE --- init_philo
 int		init_philo(t_data *data);
 // UTILS --- ft_atoi.c
