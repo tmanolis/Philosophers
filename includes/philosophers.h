@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/07 14:57:34 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/07 15:52:46 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ typedef struct s_philo
 	int		time_to_die;
 	int		time_to_eat;
 	int		time_to_sleep;
-	int		need_to_eat;
-	_Bool	is_dead;
-	
+	int		needs_to_eat;
+	bool	is_dead;	
 }				t_philo;
-
 
 typedef struct s_data
 {
@@ -53,7 +51,7 @@ int		init_threads(t_data *data);
 // UTILS --- free4yourlife
 void	free4yourlife(t_data *data);
 // UTILS --- ft_atoi.c
-int		ft_atoi(const char *str);
+int		ft_atoi(char *str);
 // UTILS --- ft_isdigit.c
 int		ft_isdigit(int c);
 // UTILS --- join_threads.c
