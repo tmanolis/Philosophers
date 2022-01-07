@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/07 16:56:07 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/07 17:49:11 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 typedef struct s_philo
 {
 	int				id;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
+	pthread_mutex_t *left_fork;
+	pthread_mutex_t *right_fork;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
@@ -37,8 +37,8 @@ typedef struct s_data
 {
 	int				nb_philo;
 	t_philo			*philo;
-	pthread_mutex_t	*fork;
 	pthread_t		*thread;
+	pthread_mutex_t	*fork;
 }				t_data;
 
 // MAIN 

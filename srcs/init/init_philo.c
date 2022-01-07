@@ -6,21 +6,21 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 14:20:23 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/07 16:59:29 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/07 18:29:15 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	init_mutex_forks(t_data *data)
+int	init_mutex_forks(t_data *data, int nb_philo)
 {
 	int i;
 
-	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * data->nb_philo);
+	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * nb_philo);
 	if (!data->fork)
 		return (FAILURE);
 	i = 0;
-	while (i < data->nb_philo)
+	while (i < nb_philo)
 	{
 		pthread_mutex_init(&data->fork[i], NULL);
 		i++;
@@ -35,12 +35,14 @@ int	init_philo(t_data *data)
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->nb_philo);
 	if (!data->philo)
 		return (FAILURE);
-	if (init_mutex_forks(data) == FAILURE)
+	if (init_mutex_forks(data, data->nb_philo) == FAILURE)
 		return (FAILURE);
 	i = 0;
 	while (i < data->nb_philo)
 	{
 		data->philo[i].id = i + 1;
+		data->philo[i].left_fork = &data->fork[(i + 1) % data->nb_philo];
+		data->philo[i].right_fork = &data->fork[i];
 		data->philo[i].is_dead = false;
 		data->philo[i].needs_to_eat = 0;
 		i++;
