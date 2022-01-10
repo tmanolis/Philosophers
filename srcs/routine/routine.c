@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 15:14:39 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/10 15:27:56 by tmanolis         ###   ########.fr       */
+/*   Created: 2022/01/10 15:12:25 by tmanolis          #+#    #+#             */
+/*   Updated: 2022/01/10 15:44:28 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+void	philo_eat(t_philo *philo)
 {
-	t_data data;
-	
-	data = (t_data){0};
-	
-	if (argc == 5 || argc == 6)
-	{
-		if (get_args(argc, argv, &data) == FAILURE)
-			return (FAILURE);
-	}
-	else
-		return (FAILURE);
-	init_threads(&data);
-	join_threads(&data);
-	free4yourlife(&data);
+	pthread_mutex_lock(philo->left_fork);
+	pthread_mutex_lock(philo->right_fork);
+	printf("Philo %d : has eaten\n", philo->id);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
+}
+
+void	*routine(void *arg)
+{
+	t_philo *philo;
+
+	philo = (t_philo *)arg;
+	if (philo->id % 2)
+		usleep(10);
+	philo_eat(philo);
 	return (0);
 }

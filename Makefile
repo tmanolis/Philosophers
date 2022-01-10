@@ -5,6 +5,7 @@ SRCS = main.c								\
 	init/get_args.c							\
 	init/init_philo.c						\
 	init/init_threads.c						\
+	routine/routine.c						\
 	utils/free4yourlife.c					\
 	utils/ft_atoi.c							\
 	utils/ft_isdigit.c						\

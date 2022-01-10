@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/07 17:49:11 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:31:46 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <stdbool.h>
 
 # define SUCCESS 1
@@ -41,14 +42,15 @@ typedef struct s_data
 	pthread_mutex_t	*fork;
 }				t_data;
 
-// MAIN 
-void	*routine();
+
 // INIT--- get_args
 int		get_args(int argc, char **argv, t_data *data);
 // INIT--- init_philo
 int		init_philo(t_data *data);
 // INIT --- init_threads
 int		init_threads(t_data *data);
+// ROUTINE --- routine.c
+void	*routine(void *arg);
 // UTILS --- free4yourlife
 void	free4yourlife(t_data *data);
 // UTILS --- ft_atoi.c

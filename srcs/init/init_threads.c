@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:51:10 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/07 14:52:40 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:23:39 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	init_threads(t_data *data)
 		return (FAILURE);
 	while (i < nb_philo)
 	{
-		if (pthread_create(&data->thread[i], NULL, &routine, NULL) != 0)
+		if (pthread_create(&data->thread[i], NULL, &routine, &data->philo[i]) != 0)
 			return (FAILURE);
 		i++;
 	}
