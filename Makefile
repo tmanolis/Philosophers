@@ -9,6 +9,7 @@ SRCS = main.c								\
 	utils/free4yourlife.c					\
 	utils/ft_atoi.c							\
 	utils/ft_isdigit.c						\
+	utils/get_time.c						\
 	utils/join_threads.c					\
 		
 OBJS = $(addprefix $(SRCS_DIR), $(SRCS:.c=.o))

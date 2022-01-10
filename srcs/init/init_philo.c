@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 14:20:23 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/07 18:29:15 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/10 18:14:30 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	init_philo(t_data *data)
 		data->philo[i].right_fork = &data->fork[i];
 		data->philo[i].is_dead = false;
 		data->philo[i].needs_to_eat = 0;
+		data->philo[i].data = data;
 		i++;
 	}
 	return (SUCCESS);

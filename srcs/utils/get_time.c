@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 15:14:39 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/10 18:05:37 by tmanolis         ###   ########.fr       */
+/*   Created: 2022/01/10 16:28:26 by tmanolis          #+#    #+#             */
+/*   Updated: 2022/01/10 17:49:40 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	main(int argc, char **argv)
+long int	get_time(void)
 {
-	t_data data;
-	
-	data = (t_data){0};
-	
-	if (argc == 5 || argc == 6)
-	{
-		if (get_args(argc, argv, &data) == FAILURE)
-			return (FAILURE);
-	}
-	else
-		return (FAILURE);
-	data.initial_time = get_time();
-	init_threads(&data);
-	join_threads(&data);
-	free4yourlife(&data);
-	return (0);
+	long int	timestamp;
+	struct	timeval time;
+
+	timestamp = 0;
+	gettimeofday(&time, NULL);
+	timestamp = (time.tv_sec * 1000) + (time.tv_usec / 1000);
+	return (timestamp);
 }
