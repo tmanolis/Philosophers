@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 14:20:23 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/10 18:14:30 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:11:50 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int	init_philo(t_data *data)
 		data->philo[i].id = i + 1;
 		data->philo[i].left_fork = &data->fork[(i + 1) % data->nb_philo];
 		data->philo[i].right_fork = &data->fork[i];
-		data->philo[i].is_dead = false;
 		data->philo[i].needs_to_eat = 0;
+		data->philo[i].last_meal = 0;
+		data->philo[i].is_dead = false;
 		data->philo[i].data = data;
 		i++;
 	}
