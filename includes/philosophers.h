@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/10 19:10:08 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:17:21 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <sys/time.h>
 # include <stdbool.h>
 
-# define SUCCESS 1
-# define FAILURE 0
+# define SUCCESS 0
+# define FAILURE 1
 
 typedef struct s_philo
 {
@@ -53,6 +53,8 @@ int		get_args(int argc, char **argv, t_data *data);
 int		init_philo(t_data *data);
 // INIT --- init_threads
 int		init_threads(t_data *data);
+// ROUTINE --- check_death
+int		check_death(t_philo *philo);
 // ROUTINE --- routine.c
 void	*routine(void *arg);
 // UTILS --- free4yourlife
