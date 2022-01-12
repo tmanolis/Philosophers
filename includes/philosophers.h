@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/12 12:17:21 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:01:30 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,36 @@ typedef struct s_data
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	mutex_print;
+	pthread_mutex_t	mutex_death;
 }				t_data;
 
 
 // INIT--- get_args
-int		get_args(int argc, char **argv, t_data *data);
+int			get_args(int argc, char **argv, t_data *data);
 // INIT--- init_mutex
-int		init_mutex_forks(t_data *data, int nb_philo);
-int		init_mutex(t_data *data);
+int			init_mutex_forks(t_data *data, int nb_philo);
+int			init_mutex(t_data *data);
 // INIT--- init_philo
-int		init_philo(t_data *data);
+int			init_philo(t_data *data);
 // INIT --- init_threads
-int		init_threads(t_data *data);
+int			init_threads(t_data *data);
 // ROUTINE --- check_death
-int		check_death(t_philo *philo);
+int			check_is_alive(t_philo *philo);
+void		check_death(t_data *data);
 // ROUTINE --- display
 long int	display(t_philo *philo, char *str);
 // ROUTINE --- routine
-void	*routine(void *arg);
+void		*routine(void *arg);
 // UTILS --- free4yourlife
-void	free4yourlife(t_data *data);
+void		free4yourlife(t_data *data);
 // UTILS --- ft_atoi
-int		ft_atoi(char *str);
+int			ft_atoi(char *str);
 // UTILS --- ft_isdigit.c
-int		ft_isdigit(int c);
+int			ft_isdigit(int c);
 // UTILS --- get_time
 long int	get_time(void);
 // UTILS --- join_threads
-int		join_threads(t_data *data);
+int			join_threads(t_data *data);
 
 
 #endif

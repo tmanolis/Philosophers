@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:53:11 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/12 11:44:58 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:36:29 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	free_mutex(t_data *data)
 {
 	free_mutex_fork(data);
 	pthread_mutex_destroy(&data->mutex_print);
+	pthread_mutex_destroy(&data->mutex_death);
 }
 
 void	free4yourlife(t_data *data)

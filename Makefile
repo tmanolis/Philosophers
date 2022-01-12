@@ -30,6 +30,7 @@ CC = clang
 RM = rm -f
 
 CFLAGS = -g -Wall -Wextra -Werror -pthread
+# CFLAGS = -Wall -Wextra -Werror -pthread -g3 -fsanitize=thread
 
 # *========= RULES =========*
 

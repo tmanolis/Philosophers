@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:39 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/11 19:56:13 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:53:24 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 	else
 		return (FAILURE);
 	init_threads(&data);
+	check_death(&data);
+	printf("I AM MUEERTEEEEEEEEEEEEEEEEEEEEEEEEE\n");
 	join_threads(&data);
 	free4yourlife(&data);
 	return (0);

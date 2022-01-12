@@ -6,30 +6,49 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:37:54 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/11 22:34:34 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/12 18:20:07 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int		check_death(t_philo *philo)
+int		check_is_alive(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->data->mutex_death);
+	if (philo->data->is_dead == true)
+	{
+		pthread_mutex_unlock(&philo->data->mutex_death);
+		return (FAILURE);
+	}
+	pthread_mutex_unlock(&philo->data->mutex_death);
+	return (SUCCESS);
+
+}
+
+void	check_death(t_data *data)
+{
+	int			i;
 	long int	actual_time;
 	long int	last_meal_time;
 
-	actual_time = get_time();
-	last_meal_time = actual_time - philo->last_meal;
-	if (last_meal_time > philo->data->time_to_die)
+	usleep((data->time_to_die * 1000) / 2);
+	i = 0;
+	while (1)
 	{
-		philo->data->is_dead = true;
-		printf("%ld ms : Philo %d died\n", (actual_time - philo->data->initial_time), philo->id);
-		return (FAILURE);
+		actual_time = get_time();
+		last_meal_time = actual_time - data->philo[i].last_meal;
+		if (last_meal_time > data->time_to_die)
+		{
+			// printf("actual time : %ld\nlast_meal : %ld\ndiff : %ld\n", actual_time, data->philo[i].last_meal, last_meal_time);
+			pthread_mutex_lock(&data->mutex_death);
+			data->is_dead = true;
+			pthread_mutex_unlock(&data->mutex_death);
+			printf("%ld ms : Philo %d died\n", actual_time - data->initial_time, data->philo[i].id);
+			return ;
+		}
+		i++;
+		if (i == (data->nb_philo - 1))
+			i = 0;
+		usleep(10);
 	}
-	else
-		return (SUCCESS);
 }
-
-// void	check_death(t_data *data)
-// {
-	
-// }
