@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:51:10 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/10 15:23:39 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/11 22:32:10 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	init_threads(t_data *data)
 	data->thread = (pthread_t *)malloc(sizeof(pthread_t) * nb_philo);
 	if (!data->thread)
 		return (FAILURE);
+	data->initial_time = get_time();
 	while (i < nb_philo)
 	{
 		if (pthread_create(&data->thread[i], NULL, &routine, &data->philo[i]) != 0)

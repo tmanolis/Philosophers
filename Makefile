@@ -3,9 +3,11 @@
 SRCS_DIR = ./srcs/
 SRCS = main.c								\
 	init/get_args.c							\
+	init/init_mutex.c						\
 	init/init_philo.c						\
 	init/init_threads.c						\
 	routine/check_death.c					\
+	routine/display.c						\
 	routine/routine.c						\
 	utils/free4yourlife.c					\
 	utils/ft_atoi.c							\

@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_death.c                                      :+:      :+:    :+:   */
+/*   init_mutex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 17:37:54 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/11 22:34:34 by tmanolis         ###   ########.fr       */
+/*   Created: 2022/01/11 20:06:00 by tmanolis          #+#    #+#             */
+/*   Updated: 2022/01/12 11:44:47 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int		check_death(t_philo *philo)
+int	init_mutex_forks(t_data *data, int nb_philo)
 {
-	long int	actual_time;
-	long int	last_meal_time;
+	int i;
 
-	actual_time = get_time();
-	last_meal_time = actual_time - philo->last_meal;
-	if (last_meal_time > philo->data->time_to_die)
-	{
-		philo->data->is_dead = true;
-		printf("%ld ms : Philo %d died\n", (actual_time - philo->data->initial_time), philo->id);
+	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * nb_philo);
+	if (!data->fork)
 		return (FAILURE);
+	i = 0;
+	while (i < nb_philo)
+	{
+		pthread_mutex_init(&data->fork[i], NULL);
+		i++;
 	}
-	else
-		return (SUCCESS);
+	return (SUCCESS);
 }
 
-// void	check_death(t_data *data)
-// {
-	
-// }
+int	init_mutex(t_data *data)
+{
+	if (init_mutex_forks(data, data->nb_philo) == FAILURE)
+		return (FAILURE);
+	pthread_mutex_init(&data->mutex_print, NULL);
+	return (SUCCESS);
+}

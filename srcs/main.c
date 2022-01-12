@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:39 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/10 18:05:37 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:56:13 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		return (FAILURE);
-	data.initial_time = get_time();
 	init_threads(&data);
 	join_threads(&data);
 	free4yourlife(&data);
