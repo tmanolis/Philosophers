@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:37:54 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/12 18:20:07 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:46:30 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@ void	check_death(t_data *data)
 	while (1)
 	{
 		actual_time = get_time();
+		pthread_mutex_lock(&data->mutex_meal);
 		last_meal_time = actual_time - data->philo[i].last_meal;
+		pthread_mutex_unlock(&data->mutex_meal);
 		if (last_meal_time > data->time_to_die)
 		{
 			// printf("actual time : %ld\nlast_meal : %ld\ndiff : %ld\n", actual_time, data->philo[i].last_meal, last_meal_time);

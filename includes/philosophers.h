@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/12 18:01:30 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/13 15:57:58 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
 	t_philo			*philo;
 	pthread_t		*thread;
 	pthread_mutex_t	*fork;
+	pthread_mutex_t	mutex_meal;
 	pthread_mutex_t	mutex_print;
 	pthread_mutex_t	mutex_death;
 }				t_data;
@@ -63,6 +64,8 @@ int			check_is_alive(t_philo *philo);
 void		check_death(t_data *data);
 // ROUTINE --- display
 long int	display(t_philo *philo, char *str);
+// ROUTINE --- philo_eat
+void		philo_eat(t_philo *philo);
 // ROUTINE --- routine
 void		*routine(void *arg);
 // UTILS --- free4yourlife

@@ -8,6 +8,7 @@ SRCS = main.c								\
 	init/init_threads.c						\
 	routine/check_death.c					\
 	routine/display.c						\
+	routine/philo_eat.c						\
 	routine/routine.c						\
 	utils/free4yourlife.c					\
 	utils/ft_atoi.c							\
