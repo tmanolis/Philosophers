@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:12:25 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 15:57:08 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:51:31 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	*routine(void *arg)
 	t_philo *philo;
 
 	philo = (t_philo *)arg;
+	if (philo->data->nb_philo == 1)
+	{
+		usleep(philo->data->time_to_die * 1000);
+		printf("%d ms : Philo %d died\n", philo->data->time_to_die, philo->id);	
+		return (0);
+	}
 	pthread_mutex_lock(&philo->data->mutex_meal);
 	philo->last_meal = philo->data->initial_time;
 	pthread_mutex_unlock(&philo->data->mutex_meal);

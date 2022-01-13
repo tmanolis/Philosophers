@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:56:36 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 16:04:40 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:25:43 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	philo_eat(t_philo *philo)
 {
 	long int	actual_time;
 	
+	if (check_is_alive(philo) == FAILURE)
+		return ;
 	lock_forks(philo);
 	actual_time = display(philo, "is eating");
 	pthread_mutex_lock(&philo->data->mutex_meal);
