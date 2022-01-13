@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:12:25 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 17:51:31 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:54:05 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	philo_sleep_and_think(t_philo *philo)
 {
-	display(philo, "is sleeping");
+	display(philo, "is sleeping", BLUE);
 	usleep(philo->data->time_to_sleep * 1000);
-	display(philo, "is thinking");
+	display(philo, "is thinking", PURPLE);
 	usleep(10);
 }
 

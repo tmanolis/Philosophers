@@ -6,13 +6,13 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 12:08:11 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/12 18:01:22 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:58:53 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-long int	display(t_philo *philo, char *str)
+long int	display(t_philo *philo, char *str, char *color)
 {
 	long int	actual_time;
 
@@ -20,7 +20,8 @@ long int	display(t_philo *philo, char *str)
 	if (check_is_alive(philo) == SUCCESS)
 	{
 		pthread_mutex_lock(&philo->data->mutex_print);
-		printf("%ld ms : Philo %d %s\n", (actual_time - philo->data->initial_time), philo->id, str);
+		printf("%s%ld ms \t | %d %s\n%s", 
+        color, (actual_time - philo->data->initial_time), philo->id, str, RESET);
 		pthread_mutex_unlock(&philo->data->mutex_print);
 	}
 	return (actual_time);

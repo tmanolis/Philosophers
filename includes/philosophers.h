@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 15:57:58 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:52:49 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@
 
 # define SUCCESS 0
 # define FAILURE 1
+
+# define GREEN "\033[0;32m"
+# define PURPLE "\033[0;35m"
+# define YELLOW "\033[1;33m"
+# define BLUE "\033[0;36m"
+# define WHITE "\033[0;37m"
+# define RESET "\033[0m"
 
 typedef struct s_philo
 {
@@ -63,7 +70,7 @@ int			init_threads(t_data *data);
 int			check_is_alive(t_philo *philo);
 void		check_death(t_data *data);
 // ROUTINE --- display
-long int	display(t_philo *philo, char *str);
+long int	display(t_philo *philo, char *str, char *color);
 // ROUTINE --- philo_eat
 void		philo_eat(t_philo *philo);
 // ROUTINE --- routine
