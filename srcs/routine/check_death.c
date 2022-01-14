@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:37:54 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 14:25:26 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/14 17:07:20 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,25 @@ int		check_is_alive(t_philo *philo)
 
 }
 
+long int	update_last_meal(t_data *data, long int actual_time, int i)
+{
+	long int	last_meal_time;
+	
+	pthread_mutex_lock(&data->mutex_meal);
+	last_meal_time = actual_time - data->philo[i].last_meal;
+	pthread_mutex_unlock(&data->mutex_meal);
+	return (last_meal_time);
+}
+
+void	kill_philo(t_data *data, long int actual_time, int i)
+{
+	pthread_mutex_lock(&data->mutex_death);
+	data->is_dead = true;
+	pthread_mutex_unlock(&data->mutex_death);
+	printf("%s%ld ms	: Philo %d died\n%s", 
+	RED, actual_time - data->initial_time, data->philo[i].id, RESET);
+}
+
 void	check_death(t_data *data)
 {
 	int			i;
@@ -36,17 +55,10 @@ void	check_death(t_data *data)
 	while (1)
 	{
 		actual_time = get_time();
-		pthread_mutex_lock(&data->mutex_meal);
-		last_meal_time = actual_time - data->philo[i].last_meal;
-		pthread_mutex_unlock(&data->mutex_meal);
+		last_meal_time = update_last_meal(data, actual_time, i);
 		if (last_meal_time > data->time_to_die)
 		{
-			// printf("actual time : %ld\nlast_meal : %ld\ndiff : %ld\n", actual_time, data->philo[i].last_meal, last_meal_time);
-			pthread_mutex_lock(&data->mutex_death);
-			data->is_dead = true;
-			pthread_mutex_unlock(&data->mutex_death);
-			printf("%s%ld ms	: Philo %d died\n%s", 
-			RED, actual_time - data->initial_time, data->philo[i].id, RESET);
+			kill_philo(data, actual_time, i);
 			return ;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:56:36 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 14:40:55 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/14 14:58:40 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	philo_eat(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->mutex_meal);
 	usleep(philo->data->time_to_eat * 1000);
 	unlock_forks(philo);
-	if (philo->needs_to_eat != 0)
+	if (philo->needs_to_eat > 0)
 		philo->needs_to_eat--;
 }
