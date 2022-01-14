@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 17:17:00 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/14 18:54:07 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,10 @@ int			init_philo(t_data *data);
 // INIT --- init_threads
 int			init_threads(t_data *data);
 // ROUTINE --- check_death
+void		check_death_without_meals(t_data *data);
+void		check_death_with_meals(t_data *data);
+// ROUTINE --- check_is_alive
 int			check_is_alive(t_philo *philo);
-void		check_death(t_data *data);
 // ROUTINE --- display
 long int	display(t_philo *philo, char *str, char *color);
 // ROUTINE --- philo_eat

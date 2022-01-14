@@ -6,24 +6,11 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:37:54 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 18:15:26 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/14 18:53:27 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-int		check_is_alive(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->data->mutex_death);
-	if (philo->data->is_dead == true)
-	{
-		pthread_mutex_unlock(&philo->data->mutex_death);
-		return (FAILURE);
-	}
-	pthread_mutex_unlock(&philo->data->mutex_death);
-	return (SUCCESS);
-
-}
 
 long int	update_last_meal(t_data *data, long int actual_time, int i)
 {
@@ -44,30 +31,6 @@ void	kill_philo(t_data *data, long int actual_time, int i)
 	RED, actual_time - data->initial_time, data->philo[i].id, RESET);
 }
 
-// void	check_death(t_data *data)
-// {
-// 	int			i;
-// 	long int	actual_time;
-// 	long int	last_meal_time;
-
-// 	usleep((data->time_to_die * 1000) / 2);
-// 	i = 0;
-// 	while (1)
-// 	{
-// 		actual_time = get_time();
-// 		last_meal_time = update_last_meal(data, actual_time, i);
-// 		if (last_meal_time > data->time_to_die)
-// 		{
-// 			kill_philo(data, actual_time, i);
-// 			return ;
-// 		}
-// 		i++;
-// 		if (i == (data->nb_philo - 1))
-// 			i = 0;
-// 		usleep(10);
-// 	}
-// }
-
 int	philos_finish_eating(t_data *data)
 {
 	pthread_mutex_lock(&data->mutex_meal);
@@ -80,48 +43,51 @@ int	philos_finish_eating(t_data *data)
 	return (SUCCESS);
 }
 
-void	check_death(t_data *data)
+void	check_death_without_meals(t_data *data)
 {
 	int			i;
 	long int	actual_time;
 	long int	last_meal_time;
 
-	// usleep((data->time_to_die * 1000) / 2);
 	usleep(30000);
 	i = 0;
-	if (data->philos_need_to_eat == 0)
+	while (1)
 	{
-		while (1)
+		actual_time = get_time();
+		last_meal_time = update_last_meal(data, actual_time, i);
+		if (last_meal_time > data->time_to_die)
 		{
-			actual_time = get_time();
-			last_meal_time = update_last_meal(data, actual_time, i);
-			if (last_meal_time > data->time_to_die)
-			{
-				kill_philo(data, actual_time, i);
-				return ;
-			}
-			i++;
-			if (i == (data->nb_philo - 1))
-				i = 0;
-			usleep(10);
+			kill_philo(data, actual_time, i);
+			return ;
 		}
+		i++;
+		if (i == (data->nb_philo - 1))
+			i = 0;
+		usleep(10);
 	}
-	else
+}
+
+void	check_death_with_meals(t_data *data)
+{
+	int			i;
+	long int	actual_time;
+	long int	last_meal_time;
+
+	usleep(30000);
+	i = 0;
+	while (1 && philos_finish_eating(data) == FAILURE)
 	{
-		while (1 && philos_finish_eating(data) == FAILURE)
+		actual_time = get_time();
+		last_meal_time = update_last_meal(data, actual_time, i);
+		if (last_meal_time > data->time_to_die && philos_finish_eating(data) == FAILURE)
 		{
-			actual_time = get_time();
-			last_meal_time = update_last_meal(data, actual_time, i);
-			if (last_meal_time > data->time_to_die && philos_finish_eating(data) == FAILURE)
-			{
-				kill_philo(data, actual_time, i);
-				return ;
-			}
-			i++;
-			if (i == (data->nb_philo - 1))
-				i = 0;
-			usleep(10);
+			kill_philo(data, actual_time, i);
+			return ;
 		}
-		return ;
+		i++;
+		if (i == (data->nb_philo - 1))
+			i = 0;
+		usleep(10);
 	}
+	return ;
 }

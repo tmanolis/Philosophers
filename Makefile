@@ -7,6 +7,7 @@ SRCS = main.c								\
 	init/init_philo.c						\
 	init/init_threads.c						\
 	routine/check_death.c					\
+	routine/check_is_alive.c				\
 	routine/display.c						\
 	routine/philo_eat.c						\
 	routine/routine.c						\
