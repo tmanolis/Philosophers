@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:39:55 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/11 22:00:01 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/14 17:42:19 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	get_nb_needs_to_eat(t_data *data, int nb)
 		data->philo[i].needs_to_eat = nb;
 		i++;
 	}
+	data->philos_need_to_eat = data->nb_philo;
 }
 
 int	get_args(int argc, char **argv, t_data *data)
