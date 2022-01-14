@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:56:36 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 19:53:41 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/14 14:40:55 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,16 @@
 
 void	lock_forks(t_philo *philo)
 {
-	if (philo->id % 2)
-	{
-		pthread_mutex_lock(philo->left_fork);
-		display(philo, "has taken a fork", WHITE);
-		pthread_mutex_lock(philo->right_fork);
-		display(philo, "has taken a fork", WHITE);
-	}
-	else
-	{
-		pthread_mutex_lock(philo->right_fork);
-		display(philo, "has taken a fork", WHITE);
-		pthread_mutex_lock(philo->left_fork);
-		display(philo, "has taken a fork", WHITE);
-	}
+	pthread_mutex_lock(philo->left_fork);
+	display(philo, "has taken a fork", WHITE);
+	pthread_mutex_lock(philo->right_fork);
+	display(philo, "has taken a fork", WHITE);
 }
 
 void	unlock_forks(t_philo *philo)
 {
-	if (philo->id % 2)
-	{
-		pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
-	}
-	else
-	{
-		pthread_mutex_unlock(philo->right_fork);
-		pthread_mutex_unlock(philo->left_fork);
-	}
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }
 
 void	philo_eat(t_philo *philo)
@@ -51,7 +33,7 @@ void	philo_eat(t_philo *philo)
 	if (check_is_alive(philo) == FAILURE)
 		return ;
 	lock_forks(philo);
-	actual_time = display(philo, "is eating", GREEN);
+	actual_time = display(philo, "is eating", YELLOW);
 	pthread_mutex_lock(&philo->data->mutex_meal);
 	philo->last_meal = actual_time;
 	pthread_mutex_unlock(&philo->data->mutex_meal);

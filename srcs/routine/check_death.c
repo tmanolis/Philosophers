@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:37:54 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 14:46:30 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/14 14:25:26 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	check_death(t_data *data)
 			pthread_mutex_lock(&data->mutex_death);
 			data->is_dead = true;
 			pthread_mutex_unlock(&data->mutex_death);
-			printf("%ld ms : Philo %d died\n", actual_time - data->initial_time, data->philo[i].id);
+			printf("%s%ld ms	: Philo %d died\n%s", 
+			RED, actual_time - data->initial_time, data->philo[i].id, RESET);
 			return ;
 		}
 		i++;
