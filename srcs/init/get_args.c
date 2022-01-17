@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:39:55 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 17:42:19 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/17 14:53:43 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	get_nb_needs_to_eat(t_data *data, int nb)
 
 int	get_args(int argc, char **argv, t_data *data)
 {
+	if (check_errors(argc, argv) == FAILURE)
+		return (FAILURE);
 	data->nb_philo = ft_atoi(argv[1]);
 	get_args_time(data, ft_atoi(argv[2]), ft_atoi(argv[3]), ft_atoi(argv[4]));
 	data->is_dead = false;

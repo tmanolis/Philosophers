@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 18:54:07 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/17 14:39:11 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_data
 }				t_data;
 
 
+// INIT--- check_errors
+int			check_errors(int argc, char **argv);
 // INIT--- get_args
 int			get_args(int argc, char **argv, t_data *data);
 // INIT--- init_mutex

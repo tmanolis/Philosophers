@@ -2,6 +2,7 @@
 
 SRCS_DIR = ./srcs/
 SRCS = main.c								\
+	init/check_errors.c						\
 	init/get_args.c							\
 	init/init_mutex.c						\
 	init/init_philo.c						\
