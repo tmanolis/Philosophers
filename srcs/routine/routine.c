@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 15:12:25 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/17 14:49:32 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 13:52:19 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	one_philo_routine(t_philo *philo)
 {
 	display(philo, "has taken a fork", WHITE);
 	usleep(philo->data->time_to_die * 1000);
-	printf("%s%d ms : Philo %d died\n%s", 
-	RED, philo->data->time_to_die, philo->id, RESET);
+	printf("%s%d ms : Philo %d died\n%s",
+		RED, philo->data->time_to_die, philo->id, RESET);
 }
 
 void	init_meal_and_protect_forks(t_philo *philo)
@@ -52,7 +52,7 @@ void	routine_with_meals(t_philo *philo)
 
 void	*routine(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)arg;
 	if (philo->data->nb_philo == 1)

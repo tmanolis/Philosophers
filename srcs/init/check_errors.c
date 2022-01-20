@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 13:51:19 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/20 11:41:15 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:11:30 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int	check_errors(int argc, char **argv)
 		return (FAILURE);
 	if (argc == 6 && ft_atoi(argv[5]) < 1)
 	{
-		print_errors("<Number_of_times_each_philosopher_must_eat> \
-		must be superior at 0. If you don't want to set up a \
-		mimimum don't add a 5th arg.\n");
+		print_errors("<Number_of_times_each_philosopher_must_eat>\
+		must be superior at 0. If you don't want\
+		to set up a mimimum don't add a 5th arg.\n");
 		return (FAILURE);
 	}
 	return (SUCCESS);

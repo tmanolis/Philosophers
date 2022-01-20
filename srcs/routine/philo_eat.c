@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 15:56:36 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 14:58:40 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:40:44 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	unlock_forks(t_philo *philo)
 void	philo_eat(t_philo *philo)
 {
 	long int	actual_time;
-	
+
 	if (check_is_alive(philo) == FAILURE)
 		return ;
 	lock_forks(philo);

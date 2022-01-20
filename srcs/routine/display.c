@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 12:08:11 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/17 14:48:55 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:43:51 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ long int	display(t_philo *philo, char *str, char *color)
 	if (check_is_alive(philo) == SUCCESS)
 	{
 		pthread_mutex_lock(&philo->data->mutex_print);
-		printf("%s%ld ms	: Philo %d %s\n%s", 
-		color, (actual_time - philo->data->initial_time), 
-		philo->id, str, RESET);
+		printf("%s%ld ms	: Philo %d %s\n%s",
+			color, (actual_time - philo->data->initial_time),
+			philo->id, str, RESET);
 		pthread_mutex_unlock(&philo->data->mutex_print);
 	}
 	return (actual_time);

@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/18 12:36:25 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 13:50:43 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_data
 	pthread_mutex_t	mutex_death;
 }				t_data;
 
-
 // INIT--- check_errors
 int			check_errors(int argc, char **argv);
 // INIT--- get_args
@@ -85,7 +84,7 @@ void		*routine(void *arg);
 // UTILS --- free4yourlife
 void		free4yourlife(t_data *data);
 // UTILS --- ft_atoi
-long int	ft_atoi(char *str);
+long int	ft_atoi(char *ystr);
 // UTILS --- ft_isdigit.c
 int			ft_isdigit(int c);
 // UTILS --- ft_strlen.c

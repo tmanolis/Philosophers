@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:37:54 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/14 18:53:27 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:42:31 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long int	update_last_meal(t_data *data, long int actual_time, int i)
 {
 	long int	last_meal_time;
-	
+
 	pthread_mutex_lock(&data->mutex_meal);
 	last_meal_time = actual_time - data->philo[i].last_meal;
 	pthread_mutex_unlock(&data->mutex_meal);
@@ -27,8 +27,8 @@ void	kill_philo(t_data *data, long int actual_time, int i)
 	pthread_mutex_lock(&data->mutex_death);
 	data->is_dead = true;
 	pthread_mutex_unlock(&data->mutex_death);
-	printf("%s%ld ms	: Philo %d died\n%s", 
-	RED, actual_time - data->initial_time, data->philo[i].id, RESET);
+	printf("%s%ld ms	: Philo %d died\n%s",
+		RED, actual_time - data->initial_time, data->philo[i].id, RESET);
 }
 
 int	philos_finish_eating(t_data *data)
@@ -79,7 +79,8 @@ void	check_death_with_meals(t_data *data)
 	{
 		actual_time = get_time();
 		last_meal_time = update_last_meal(data, actual_time, i);
-		if (last_meal_time > data->time_to_die && philos_finish_eating(data) == FAILURE)
+		if (last_meal_time > data->time_to_die
+			&& philos_finish_eating(data) == FAILURE)
 		{
 			kill_philo(data, actual_time, i);
 			return ;
