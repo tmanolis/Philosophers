@@ -15,6 +15,7 @@ SRCS = main.c								\
 	utils/free4yourlife.c					\
 	utils/ft_atoi.c							\
 	utils/ft_isdigit.c						\
+	utils/ft_strlen.c						\
 	utils/get_time.c						\
 	utils/join_threads.c					\
 		

@@ -6,17 +6,17 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 11:29:56 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/07 17:04:41 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:21:51 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	ft_atoi(char *str)
+long int	ft_atoi(char *str)
 {
-	int	i;
-	int	j;
-	int	value;
+	int			i;
+	int			j;
+	long int	value;
 
 	i = 0;
 	j = 0;

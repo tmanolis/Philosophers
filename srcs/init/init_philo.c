@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 14:20:23 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 17:50:05 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:36:16 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_philo(t_data *data)
 {
-	int i;
+	int	i;
 
 	data->philo = (t_philo *)malloc(sizeof(t_philo) * data->nb_philo);
 	if (!data->philo)

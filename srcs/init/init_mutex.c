@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 20:06:00 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 14:45:35 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:35:32 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	init_mutex_forks(t_data *data, int nb_philo)
 {
-	int i;
+	int	i;
 
 	data->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * nb_philo);
 	if (!data->fork)

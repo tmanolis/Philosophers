@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 18:39:55 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/17 14:53:43 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:39:48 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_args_time(t_data *data, int die, int eat, int sleep)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb_philo)
@@ -28,7 +28,7 @@ void	get_args_time(t_data *data, int die, int eat, int sleep)
 
 void	get_nb_needs_to_eat(t_data *data, int nb)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nb_philo)

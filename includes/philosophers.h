@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/17 14:39:11 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/18 12:36:25 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <stdbool.h>
+# include <limits.h>
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -84,9 +85,11 @@ void		*routine(void *arg);
 // UTILS --- free4yourlife
 void		free4yourlife(t_data *data);
 // UTILS --- ft_atoi
-int			ft_atoi(char *str);
+long int	ft_atoi(char *str);
 // UTILS --- ft_isdigit.c
 int			ft_isdigit(int c);
+// UTILS --- ft_strlen.c
+size_t		ft_strlen(const char *str);
 // UTILS --- get_time
 long int	get_time(void);
 // UTILS --- join_threads

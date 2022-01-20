@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:39 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/17 14:48:23 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 11:27:00 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	t_data data;
-	
+	t_data	data;
+
 	data = (t_data){0};
-	
 	if (argc == 5 || argc == 6)
 	{
 		if (get_args(argc, argv, &data) == FAILURE)
