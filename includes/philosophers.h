@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:14:29 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/20 13:50:43 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 15:46:04 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 typedef struct s_philo
 {
 	int				id;
-	pthread_mutex_t *left_fork;
-	pthread_mutex_t *right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	int				needs_to_eat;
 	long int		last_meal;
 	struct s_data	*data;
@@ -93,6 +93,5 @@ size_t		ft_strlen(const char *str);
 long int	get_time(void);
 // UTILS --- join_threads
 int			join_threads(t_data *data);
-
 
 #endif

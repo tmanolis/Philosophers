@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:53:11 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/13 14:45:54 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 15:44:49 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	free_mutex_fork(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < data->nb_philo)
 	{
 		pthread_mutex_destroy(&data->fork[i]);
 		i++;
-	} 
+	}
 	free(data->fork);
 }
 

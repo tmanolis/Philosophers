@@ -6,7 +6,7 @@
 /*   By: tmanolis <tmanolis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 19:19:55 by tmanolis          #+#    #+#             */
-/*   Updated: 2022/01/12 13:52:05 by tmanolis         ###   ########.fr       */
+/*   Updated: 2022/01/20 15:45:08 by tmanolis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	join_threads(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < data->nb_philo)
 	{
